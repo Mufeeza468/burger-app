@@ -61,76 +61,93 @@ const PlaceOrder: React.FC = () => {
           margin: "1rem auto",
           width: isMobile ? "160px" : "300px",
           backgroundColor: "#fff9f5",
+          height: isMobile ? "240px" : "340px",
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <div
-          style={{
-            position: "relative",
-            backgroundColor: "#8f5014",
-            height: "80px",
-            width: isMobile ? "80%" : "100%",
-            borderTopLeftRadius: "50% 100%",
-            borderTopRightRadius: "50% 100%",
-            margin: "4px auto",
-            boxShadow: "inset 0 -4px #c97b33",
-            overflow: "hidden",
+        <Box
+          sx={{
+            flex: 1,
+            overflowY: "auto",
+            px: 1,
+            "&::-webkit-scrollbar": {
+              width: "5px",
+            },
+            "&::-webkit-scrollbar-thumb": {
+              backgroundColor: "#ccc",
+              borderRadius: "8px",
+            },
           }}
         >
-          {[
-            { top: 18, leftPercent: 2 },
-            { top: 16, leftPercent: 20 },
-            { top: 14, leftPercent: 40 },
-            { top: 16, leftPercent: 60 },
-            { top: 18, leftPercent: 78 },
-            { top: 18, leftPercent: 96 },
+          <div
+            style={{
+              position: "relative",
+              backgroundColor: "#8f5014",
+              height: "80px",
+              width: isMobile ? "80%" : "100%",
+              borderTopLeftRadius: "50% 100%",
+              borderTopRightRadius: "50% 100%",
+              margin: "4px auto",
+              boxShadow: "inset 0 -4px #c97b33",
+              overflow: "hidden",
+            }}
+          >
+            {[
+              { top: 18, leftPercent: 2 },
+              { top: 16, leftPercent: 20 },
+              { top: 14, leftPercent: 40 },
+              { top: 16, leftPercent: 60 },
+              { top: 18, leftPercent: 78 },
+              { top: 18, leftPercent: 96 },
+              { top: 30, leftPercent: 5 },
+              { top: 28, leftPercent: 25 },
+              { top: 26, leftPercent: 50 },
+              { top: 28, leftPercent: 75 },
+              { top: 30, leftPercent: 95 },
+              { top: 42, leftPercent: 10 },
+              { top: 40, leftPercent: 35 },
+              { top: 42, leftPercent: 65 },
+              { top: 40, leftPercent: 90 },
+            ].map((seed, i) => (
+              <div
+                key={i}
+                style={{
+                  position: "absolute",
+                  top: seed.top,
+                  left: `${seed.leftPercent}%`,
+                  width: "8px",
+                  height: "5px",
+                  backgroundColor: "#fbe8d0",
+                  borderRadius: "50%",
+                  transform: `rotate(${i * 17}deg)`,
+                  boxShadow: "0 0 1px #d6b48c",
+                }}
+              />
+            ))}
+          </div>
 
-            { top: 30, leftPercent: 5 },
-            { top: 28, leftPercent: 25 },
-            { top: 26, leftPercent: 50 },
-            { top: 28, leftPercent: 75 },
-            { top: 30, leftPercent: 95 },
+          {Object.values(ingredients).every((count) => count === 0) ? (
+            <Typography sx={{ fontSize: "0.85rem", color: "#555", mt: 1 }}>
+              No Ingredients Added
+            </Typography>
+          ) : (
+            renderBurgerLayers()
+          )}
 
-            { top: 42, leftPercent: 10 },
-            { top: 40, leftPercent: 35 },
-            { top: 42, leftPercent: 65 },
-            { top: 40, leftPercent: 90 },
-          ].map((seed, i) => (
-            <div
-              key={i}
-              style={{
-                position: "absolute",
-                top: seed.top,
-                left: `${seed.leftPercent}%`,
-                width: "8px",
-                height: "5px",
-                backgroundColor: "#fbe8d0",
-                borderRadius: "50%",
-                transform: `rotate(${i * 17}deg)`,
-                boxShadow: "0 0 1px #d6b48c",
-              }}
-            />
-          ))}
-        </div>
-
-        {Object.values(ingredients).every((count) => count === 0) ? (
-          <Typography sx={{ fontSize: "0.85rem", color: "#555", mt: 1 }}>
-            No Ingredients Added
-          </Typography>
-        ) : (
-          renderBurgerLayers()
-        )}
-
-        <div
-          style={{
-            backgroundColor: "#8f5014",
-            height: "60px",
-            width: isMobile ? "80%" : "100%",
-            borderBottomLeftRadius: " 40%",
-            borderBottomRightRadius: "40%",
-            margin: "4px auto",
-            boxShadow: "inset 0 4px #c97b33",
-          }}
-        />
+          <div
+            style={{
+              backgroundColor: "#8f5014",
+              height: "60px",
+              width: isMobile ? "80%" : "100%",
+              borderBottomLeftRadius: " 40%",
+              borderBottomRightRadius: "40%",
+              margin: "4px auto",
+              boxShadow: "inset 0 4px #c97b33",
+            }}
+          />
+        </Box>
       </Box>
 
       <Typography variant="h6">
