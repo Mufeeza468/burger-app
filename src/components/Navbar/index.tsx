@@ -57,13 +57,6 @@ const Navbar: React.FC = () => {
             open={Boolean(anchorEl)}
             onClose={handleMenuClose}
           >
-            <MenuItem
-              component={NavLink}
-              to="/builder"
-              onClick={handleMenuClose}
-            >
-              Burger Builder
-            </MenuItem>
             {isAuthenticated ? (
               <MenuItem
                 onClick={() => {
@@ -111,21 +104,6 @@ const Navbar: React.FC = () => {
         </Box>
 
         <Box sx={{ display: { xs: "none", sm: "flex" }, alignItems: "center" }}>
-          {/* <NavLink
-            to="/builder"
-            style={({ isActive }) => ({
-              color: "white",
-              textDecoration: "none",
-              marginRight: "16px",
-              padding: "6px 12px",
-              borderBottom: isActive ? "2px solid skyblue" : "none",
-              backgroundColor: isActive ? "#8f5c2c" : "transparent",
-              borderRadius: "6px",
-            })}
-          >
-            Burger Builder
-          </NavLink> */}
-
           {isAuthenticated ? (
             <span
               onClick={handleLogout}

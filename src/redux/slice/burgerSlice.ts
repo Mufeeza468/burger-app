@@ -49,10 +49,8 @@ const burgerSlice = createSlice({
         state.totalPrice -= INGREDIENT_PRICES[ingredient];
       }
     },
-    resetBurger: () => initialState,
   },
 });
 
-export const { addIngredient, removeIngredient, resetBurger } =
-  burgerSlice.actions;
+export const { addIngredient, removeIngredient } = burgerSlice.actions;
 export default burgerSlice.reducer;
